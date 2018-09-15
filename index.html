@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!--jquery cdn-->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <!--bootstrap cdn-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+    <title>Train Tracker</title>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="jumbotron text-black bg-danger text-center">
+            <h1 class="display-2"> Train Times</h1>
+            <p class="lead">see the frequency and departure times below</p>
+
+        </div>
+
+        <div class="card ">
+            <div class="card-header text-white bg-primary">
+                <h1 class="display-4">Current Train Schedule</h1>
+            </div>
+
+            <table class="table table-hover table-bordered">
+
+                <thead class="thead-dark ">
+                    <tr>
+                        <th scope="col">Train Name</th>
+                        <th scope="col">Destination</th>
+                        <th scope="col">Frequency (min)</th>
+                        <th scope="col">Next Arrival</th>
+                        <th scope="col">Minutes Away</th>
+                    </tr>
+                </thead>
+            </table>
+
+        </div>
+
+        <!--start train form in a card? -->
+        <div class="card ">
+                <div class="card-header text-white bg-primary">
+                    <h1 class="display-4">Add Train</h1>
+                </div>
+                <!--start train form in card -->
+                <form action="">
+                    <div class="form-group">
+                        <label for="train-name">Train Name</label>
+                        <input type="text" id="train-name" name="train-name" class="form-control">
+
+                    </div>
+                    <div class="form-group">
+                            <label for="train-destination">Destination</label>
+                            <input type="text" id="train-destination" name="train-destination" class="form-control">
+    
+                        </div>
+
+
+                    <!-- end form-->
+                </form>
+    
+              
+    
+            </div>
+
+    <!--end contianer-->
+    </div>
+
+
+
+</body>
+
+</html>
