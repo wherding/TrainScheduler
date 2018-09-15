@@ -25,7 +25,7 @@
 <body>
     <div class="container">
         <div class="jumbotron text-black bg-danger text-center">
-            <h1 class="display-2"> Train Times</h1>
+            <h1 class="display-2 test1"> Train Times</h1>
             <p class="lead">see the frequency and departure times below</p>
 
         </div>
@@ -67,9 +67,20 @@
                             <input type="text" id="train-destination" name="train-destination" class="form-control">
     
                         </div>
+                        <div class="form-group">
+                            <label for="train-time">First Train Time (HH:mm - military time)</label>
+                            <input type="text" id="train-time" name="train-time" class="form-control">
+    
+                        </div>
+                        <div class="form-group">
+                            <label for="train-frequency">Train Frequency (min)</label>
+                            <input type="text" id="train-frequency" name="train-frequency" class="form-control">
+    
+                        </div>
 
 
-                    <!-- end form-->
+                    <button class="submit"> submit </button>
+                        <!-- end form-->
                 </form>
     
               
@@ -81,6 +92,21 @@
 
 
 
+    <script src="https://www.gstatic.com/firebasejs/5.5.0/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyCCXRNT-qcgis22qSRrcX6voD-HURSkuXw",
+        authDomain: "trainscheduler-f5be8.firebaseapp.com",
+        databaseURL: "https://trainscheduler-f5be8.firebaseio.com",
+        projectId: "trainscheduler-f5be8",
+        storageBucket: "trainscheduler-f5be8.appspot.com",
+        messagingSenderId: "936850050828"
+      };
+      firebase.initializeApp(config);
+    </script>
+    <script src="./assets/app.js"> </script>
+    
 </body>
 
 </html>
