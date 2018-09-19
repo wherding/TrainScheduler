@@ -63,12 +63,11 @@ var populateTable = function () {
             var sett = moment().set('hour', hour)
             sett.set('minute', min);
             //end code to set time
-            var nextArr = next(sett);
-            nexttd.text(nextArr[0].format('h:mm'));
-
-            //nexttd.text( next(sett)[0].format('h:mm'));
-            //nextMintd.text( next(sett)[1]);
-            console.log("next(sett)[1] "+next(sett)[1])
+            var nt = next(sett,child.val().frequency);
+            console.log("nextArr: "+nt)
+            nexttd.text(nt.format('H:mm'));
+            var minTiln = moment(nt,'m').fromNow();
+            nextMintd.text(minTiln)
             tr.append(nametd, destinationtd, freqtd, nexttd,nextMintd);
 
 
@@ -76,34 +75,16 @@ var populateTable = function () {
     })
 }
 
-var next = function (startTime) {
-   var nextTimes=[];
-   var min2='';
-    var next = startTime;
-    
-    var db = database.ref("trains/").once('value').then(function (snapshot) {
-        snapshot.forEach(function (child) {
-            var freq = child.val().frequency
-            console.log("freq: "+freq);
-            while (next < moment()) {
-                next.add(freq,'m').format('h:mm')            
-            }
-            min2 = String(moment(next,'m').fromNow());     
-            console.log(min2)    
-            
-        })
-        
-    })
-    
-    
-    nextTimes.push(next)
-    nextTimes.push(min2)
-    
-    console.log(nextTimes)
-
-
-    return nextTimes;
+var next = function(startTime,freq){
+    while(startTime<moment()){
+    startTime.add(freq,'m')
+    }
+    console.log("startTime at end of next(): " +startTime.format("H:mm"))
+    console.log("this is in next(): "+freq)
+return startTime;
 }
+
+
 
 document.ready(populateTable());
 
