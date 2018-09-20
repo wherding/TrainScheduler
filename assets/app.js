@@ -64,23 +64,55 @@ var populateTable = function () {
             sett.set('minute', min);
             //end code to set time
             var nt = next(sett,child.val().frequency);
-            console.log("nextArr: "+nt)
+           
             nexttd.text(nt.format('H:mm'));
             var minTiln = moment(nt,'m').fromNow();
             nextMintd.text(minTiln)
             tr.append(nametd, destinationtd, freqtd, nexttd,nextMintd);
-
-
+        //begin regex validation testing:
+        var thingTotest = nexttd.text();
+        console.log(thingTotest)
+        var regex1 = RegExp("([01][0-9]|2[0-3]):([0-5][0-9])$");
+        console.log("regex test 1: "+regex1.test(thingTotest));
+        //end  regex validation testing:
         })
+
+
     })
 }
+//start copy
+var email = document.getElementById("train-time");
 
+email.addEventListener("input", function (event) {
+  if (email.validity.patternMismatch) {
+    email.setCustomValidity("I expect an e-mail, darling!");
+  } else {
+    email.setCustomValidity("");
+  }
+});
+// end copy
+//begin test
+$("#train-time").on("change", function(){
+    var regex1 = RegExp("([01][0-9]|2[0-3]):([0-5][0-9])$");
+    var thingTotest = $(this).val();
+    var result = regex1.test(thingTotest);
+    //alert(result)
+    var l = $(".wrong");
+    
+    if (!result) {
+    //    $("#train-time").append(l)
+    l.text("please enter a time in military time format. Ex: 20:18")
+    }
+    else{
+        l.empty()
+    }
+})
+//end test
 var next = function(startTime,freq){
     while(startTime<moment()){
     startTime.add(freq,'m')
     }
-    console.log("startTime at end of next(): " +startTime.format("H:mm"))
-    console.log("this is in next(): "+freq)
+    
 return startTime;
 }
 
