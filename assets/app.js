@@ -40,41 +40,41 @@ var populateTable = function () {
             var key = child.key;
             //  console.log("this is my key"+key)
             var childv = child;
+            if (child.val().ftime==''||child.val().frequency =='') {
+                console.log("bad entry skipped");
+            } else {
+                var tr = $("<tr>");
+                var nametd = $("<td>");
+                var destinationtd = $("<td>");
+                var timetd = $("<td>");
+                var freqtd = $("<td>");
+                var nexttd = $("<td>");
+                var nextMintd = $("<td>");
+                //nexttd
+                nametd.text(child.val().name);
+                destinationtd.text(child.val().destination)
+                timetd.text(child.val().ftime)
+                freqtd.text(child.val().frequency)
+               
+                $(".traintable").append(tr)
+                //begin code to set time.
+                var f = child.val().ftime;
+                var splitTime = f.split(":");
+                var hour = splitTime[0];
+                var min = splitTime[1];
+                var sett = moment().set('hour', hour)
+                sett.set('minute', min);
+                //end code to set time
+                var nt = next(sett,child.val().frequency);
+               
+                nexttd.text(nt.format('H:mm'));
+                var minTiln = moment(nt,'m').fromNow();
+                nextMintd.text(minTiln)
+                tr.append(nametd, destinationtd, freqtd, nexttd,nextMintd);
+            }
 
-            var tr = $("<tr>");
-            var nametd = $("<td>");
-            var destinationtd = $("<td>");
-            var timetd = $("<td>");
-            var freqtd = $("<td>");
-            var nexttd = $("<td>");
-            var nextMintd = $("<td>");
-            //nexttd
-            nametd.text(child.val().name);
-            destinationtd.text(child.val().destination)
-            timetd.text(child.val().ftime)
-            freqtd.text(child.val().frequency)
            
-            $(".traintable").append(tr)
-            //begin code to set time.
-            var f = child.val().ftime;
-            var splitTime = f.split(":");
-            var hour = splitTime[0];
-            var min = splitTime[1];
-            var sett = moment().set('hour', hour)
-            sett.set('minute', min);
-            //end code to set time
-            var nt = next(sett,child.val().frequency);
-           
-            nexttd.text(nt.format('H:mm'));
-            var minTiln = moment(nt,'m').fromNow();
-            nextMintd.text(minTiln)
-            tr.append(nametd, destinationtd, freqtd, nexttd,nextMintd);
-        //begin regex validation testing:
-        var thingTotest = nexttd.text();
-        console.log(thingTotest)
-        var regex1 = RegExp("([01][0-9]|2[0-3]):([0-5][0-9])$");
-        console.log("regex test 1: "+regex1.test(thingTotest));
-        //end  regex validation testing:
+    
         })
 
 
